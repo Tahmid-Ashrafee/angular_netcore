@@ -1,0 +1,34 @@
+<div class="container">
+    <h1>Products</h1>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Details</th> <!-- Add a new column for product details -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.type }}</td>
+                <td>{{ product.price }}</td>
+                <td><div *ngIf="product.image"> <!-- Check if image exists -->
+                    <img [src]="product.image" alt="Product Image" style="max-height: 100px;">
+                </div></td>
+                <td><a [routerLink]="['/products', 'edit', product.id]">Edit</a></td>
+                <td><a [routerLink]="[]" (click)="deleteProduct(product.id)">Delete</a></td>
+                <td><a [routerLink]="['/products', 'product-detail', product.id]">View Details</a>
+                </td> <!-- Link for product details -->
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="!products || products.length == 0">No products found</p>
+</div>

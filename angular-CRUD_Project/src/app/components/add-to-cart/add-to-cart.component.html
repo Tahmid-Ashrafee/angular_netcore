@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Product Details</h1>
+    <div *ngIf="product" class="product-details">
+      <h2 class="product-name">{{ product.name }}</h2>
+      <p class="product-info"><strong>Type:</strong> {{ product.type }}</p>
+      <p class="product-info"><strong>Price:</strong> ${{ product.price }}</p>
+      <div class="quantity-control">
+        <button (click)="decrementQuantity()" class="quantity-button">-</button>
+        <span class="quantity">{{ quantity }}</span>
+        <button (click)="incrementQuantity()" class="quantity-button">+</button>
+      </div>
+      <p class="product-info"><strong>Total Price:</strong> ${{ getTotalPrice() }}</p>
+      <p class="product-info"><strong>Image:</strong></p>
+      <img *ngIf="product.image" [src]="product.image" alt="Product Image" class="product-image">
+      <button class="order-button" (click)="placeOrder()">Order</button>
+    </div>
+  
+    <div *ngIf="!product" class="product-not-found">Product not found or loading...</div>
+  </div>

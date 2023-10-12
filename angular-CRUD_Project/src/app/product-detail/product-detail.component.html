@@ -1,0 +1,20 @@
+<div class="container">
+    <h1>Product Details</h1>
+    <div *ngIf="product">
+      <h2>{{ product.name }}</h2>
+      <p><strong>ID:</strong> {{ product.id }}</p>
+      <p><strong>Type:</strong> {{ product.type }}</p>
+      <p><strong>Price:</strong> ${{ product.price }}</p>
+      <p><strong>Image:</strong></p>
+        <img *ngIf="product.image" [src]="product.image" alt="Product Image" style="max-height: 400px;">
+
+      <!-- You can display the product image here if available -->
+      <!-- <button (click)="addToCart(product)">Add to Cart</button>   -->
+      <button class="blue-button" [routerLink]="['/products', product.id]">Add to Cart</button>
+    </div>
+    
+  
+      
+
+    <div *ngIf="!product">Product not found or loading...</div>
+  </div>
