@@ -1,19 +1,40 @@
 <div class="container">
-    <h1>Product Details</h1>
-    <div *ngIf="product" class="product-details">
-      <h2 class="product-name">{{ product.name }}</h2>
-      <p class="product-info"><strong>Type:</strong> {{ product.type }}</p>
-      <p class="product-info"><strong>Price:</strong> ${{ product.price }}</p>
-      <div class="quantity-control">
-        <button (click)="decrementQuantity()" class="quantity-button">-</button>
-        <span class="quantity">{{ quantity }}</span>
-        <button (click)="incrementQuantity()" class="quantity-button">+</button>
-      </div>
-      <p class="product-info"><strong>Total Price:</strong> ${{ getTotalPrice() }}</p>
-      <p class="product-info"><strong>Image:</strong></p>
-      <img *ngIf="product.image" [src]="product.image" alt="Product Image" class="product-image">
-      <button class="order-button" (click)="placeOrder()">Order</button>
-    </div>
-  
-    <div *ngIf="!product" class="product-not-found">Product not found or loading...</div>
+  <table class="table table-bordered mt-5">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.type }}</td>
+        <td>${{ product.price  }}</td>
+        <td>
+          <div class="text-center">
+            <img [src]="product.image" alt="{{ product.name }}" class="img-thumbnail" style="max-width: 150px; max-height: 150px;">
+          </div>
+        </td>
+        <td>
+          <div class="quantity-control text-center">
+            <button class="btn btn-primary" (click)="decrementQuantity()">-</button>
+            <span class="quantity-value">{{ quantity }}</span>
+            <button class="btn btn-primary" (click)="incrementQuantity()">+</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="total-price text-center mt-3">
+    <p>Total Price: ${{ getTotalPrice()  }}</p>
   </div>
+
+  <div class="text-center mt-3">
+    <button class="btn btn-success" (click)="placeOrder()">Place Order</button>
+  </div>
+</div>

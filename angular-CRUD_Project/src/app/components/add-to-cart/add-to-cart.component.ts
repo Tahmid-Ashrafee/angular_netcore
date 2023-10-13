@@ -36,6 +36,7 @@ export class AddToCartComponent implements OnInit {
   getTotalPrice() {
     return this.product.price * this.quantity;
   }
+
   placeOrder() {
     // Display an alert when the "Order" button is clicked
     alert('Order successfully placed!');

@@ -30,7 +30,7 @@ const routes: Routes = [
   { 
     path: 'products/:id',
     component: AddToCartComponent 
-  },
+  }
 
 ];
 

@@ -7,19 +7,15 @@ import { Product } from '../models/product.model';
 export class CartService {
   private cart: Product[] = [];
 
+  addToCart(product: Product) {
+    this.cart.push(product);
+  }
+
   getCartItems(): Product[] {
     return this.cart;
   }
 
-  addToCart(product: Product): void {
-    this.cart.push(product);
-  }
-
-  removeFromCart(productId: string): void {
-    this.cart = this.cart.filter((item) => item.id !== productId);
-  }
-
-  clearCart(): void {
+  clearCart() {
     this.cart = [];
   }
 }

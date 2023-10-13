@@ -33,4 +33,5 @@ export class ProductsService {
   getProductById(id: string): Observable<Product> {
     return this.http.get<Product>(this.baseApiUrl + '/api/products/' + id);
   }
+  
 }
